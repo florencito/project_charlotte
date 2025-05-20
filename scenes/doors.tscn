@@ -1,0 +1,48 @@
+[gd_scene load_steps=7 format=3 uid="uid://t7tc0nqgm8aj"]
+
+[ext_resource type="Script" uid="uid://8plc500oa5xa" path="res://scripts/collectible.gd" id="1_26m4p"]
+[ext_resource type="Texture2D" uid="uid://c2ytyvlffsw63" path="res://assets/Tilemap/monochrome_tilemap_transparent.png" id="2_af2mo"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_aucmg"]
+size = Vector2(22, 14.75)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_26m4p"]
+atlas = ExtResource("2_af2mo")
+region = Rect2(272, 34, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_af2mo"]
+atlas = ExtResource("2_af2mo")
+region = Rect2(306, 34, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ctrmn"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_26m4p")
+}],
+"loop": true,
+"name": &"closed",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_af2mo")
+}],
+"loop": true,
+"name": &"open",
+"speed": 5.0
+}]
+
+[node name="collectible" type="Area2D" groups=["door"]]
+script = ExtResource("1_26m4p")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 0.375)
+shape = SubResource("RectangleShape2D_aucmg")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_ctrmn")
+animation = &"closed"
+autoplay = "closed"
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

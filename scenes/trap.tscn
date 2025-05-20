@@ -1,5 +1,23 @@
-[gd_scene format=3 uid="uid://bkvv070cdyxwl"]
+[gd_scene load_steps=5 format=3 uid="uid://bkvv070cdyxwl"]
+
+[ext_resource type="Script" uid="uid://eveb1ddxv7hb" path="res://scripts/trap.gd" id="1_62q8x"]
+[ext_resource type="Texture2D" uid="uid://c2ytyvlffsw63" path="res://assets/Tilemap/monochrome_tilemap_transparent.png" id="1_npg1n"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_62q8x"]
+atlas = ExtResource("1_npg1n")
+region = Rect2(34, 102, 16, 16)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_aucmg"]
+size = Vector2(14, 5)
 
 [node name="trap" type="Area2D"]
+script = ExtResource("1_62q8x")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+texture = SubResource("AtlasTexture_62q8x")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 5.5)
+shape = SubResource("RectangleShape2D_aucmg")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

@@ -1,5 +1,8 @@
 extends CharacterBody2D
 
+signal player_died
+signal player_win
+
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
 
 @export var SPEED = 100.0
@@ -28,11 +31,13 @@ func _physics_process(delta: float) -> void:
 	else:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 		animated_sprite_2d.play("idle")
-	
-	if Input.is_action_just_pressed("restart"):
-		restart()
 
 	move_and_slide()
 
-func restart():
-	get_tree().reload_current_scene()
+func death():
+	player_died.emit()
+	animated_sprite_2d.play("death")
+
+func win():
+	player_win.emit()
+	animated_sprite_2d.play("celebration")
