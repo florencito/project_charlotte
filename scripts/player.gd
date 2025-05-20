@@ -5,8 +5,13 @@ extends CharacterBody2D
 @export var SPEED = 100.0
 @export var JUMP_VELOCITY = -300.0
 
+#Comienza sin poderse mover
+var can_move := false
 
 func _physics_process(delta: float) -> void:
+	if not can_move:
+		return
+	
 	# Add the gravity.
 	if not is_on_floor():
 		velocity += get_gravity() * delta
