@@ -1,7 +1,10 @@
-[gd_scene load_steps=16 format=3 uid="uid://3fyim0l6np62"]
+[gd_scene load_steps=19 format=3 uid="uid://3fyim0l6np62"]
 
 [ext_resource type="Script" uid="uid://cjhiay4bf2cd2" path="res://scripts/player.gd" id="1_pyx2s"]
 [ext_resource type="Texture2D" uid="uid://c2ytyvlffsw63" path="res://assets/Tilemap/monochrome_tilemap_transparent.png" id="2_4csp1"]
+[ext_resource type="AudioStream" uid="uid://ckqtbooawf6tr" path="res://assets/Sound/Efecto de sonido Hit.wav" id="3_qhqgy"]
+[ext_resource type="AudioStream" uid="uid://3fgo0e3h2axm" path="res://assets/Sound/Jump.wav" id="4_dqkch"]
+[ext_resource type="AudioStream" uid="uid://c22qra656t2xf" path="res://assets/Sound/Pickup.wav" id="5_qlg0r"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_83sqk"]
 radius = 5.0065
@@ -119,3 +122,12 @@ sprite_frames = SubResource("SpriteFrames_4nk3f")
 animation = &"celebration"
 autoplay = "idle"
 frame_progress = 0.242545
+
+[node name="hitSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_qhqgy")
+
+[node name="jumpSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_dqkch")
+
+[node name="pickupSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("5_qlg0r")

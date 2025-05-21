@@ -1,0 +1,9 @@
+[gd_resource type="LabelSettings" load_steps=2 format=3 uid="uid://dwca8g4w20m07"]
+
+[ext_resource type="FontFile" uid="uid://bba4j6odm3lgi" path="res://assets/fonts/PixelAE-Bold.ttf" id="1_e6ff6"]
+
+[resource]
+font = ExtResource("1_e6ff6")
+font_size = 80
+shadow_size = 14
+shadow_color = Color(0, 0, 0, 1)

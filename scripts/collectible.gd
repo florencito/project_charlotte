@@ -13,5 +13,6 @@ func _on_body_entered(body: Node2D) -> void:
 				return
 		else:
 			body.has_key = true
+			body.pickup_sound.play()
 			print(body.has_key)
 			queue_free()

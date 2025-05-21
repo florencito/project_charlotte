@@ -4,6 +4,9 @@ signal player_died
 signal player_win
 
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
+@onready var hit_sound = $hitSound
+@onready var jump_sound = $jumpSound
+@onready var pickup_sound = $pickupSound
 
 @export var SPEED = 100.0
 @export var JUMP_VELOCITY = -300.0
@@ -23,6 +26,7 @@ func _physics_process(delta: float) -> void:
 
 	# Jump
 	if Input.is_action_just_pressed("jump") and is_on_floor():
+		jump_sound.play()
 		velocity.y = JUMP_VELOCITY
 
 	# Movimiento horizontal con get_axis
@@ -40,6 +44,7 @@ func _physics_process(delta: float) -> void:
 
 func death():
 	player_died.emit()
+	hit_sound.play()
 	animated_sprite_2d.play("death")
 
 func win():

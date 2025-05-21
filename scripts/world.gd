@@ -54,8 +54,9 @@ func restart():
 
 func _on_player_player_win() -> void:
 	player.can_move = false
+	main_canvas.show_victory_label()
 	var victory_timer = Timer.new()
-	victory_timer.wait_time = 2
+	victory_timer.wait_time = 4
 	victory_timer.one_shot = true
 	add_child(victory_timer)
 	victory_timer.start()
