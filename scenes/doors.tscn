@@ -33,7 +33,7 @@ animations = [{
 "speed": 5.0
 }]
 
-[node name="collectible" type="Area2D" groups=["door"]]
+[node name="door" type="Area2D" groups=["door"]]
 script = ExtResource("1_26m4p")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

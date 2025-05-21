@@ -1,0 +1,38 @@
+[gd_scene load_steps=4 format=3 uid="uid://brtuxgpc6a77j"]
+
+[ext_resource type="Script" uid="uid://dqhecoyc1l0gl" path="res://scripts/text_box.gd" id="1_qdwih"]
+[ext_resource type="Texture2D" uid="uid://bttsdv5kjsg6w" path="res://assets/UI/panel-000.png" id="2_3ojeh"]
+[ext_resource type="FontFile" uid="uid://b4g04vyi4bdxe" path="res://assets/fonts/VCR_OSD_MONO_1.001.ttf" id="3_nq18v"]
+
+[node name="textBox" type="MarginContainer"]
+offset_right = 31.0
+offset_bottom = 30.0
+script = ExtResource("1_qdwih")
+
+[node name="NinePatchRect" type="NinePatchRect" parent="."]
+layout_mode = 2
+texture = ExtResource("2_3ojeh")
+patch_margin_left = 16
+patch_margin_top = 16
+patch_margin_right = 14
+patch_margin_bottom = 14
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 2
+theme_override_constants/margin_left = 15
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 15
+theme_override_constants/margin_bottom = 8
+
+[node name="Label" type="Label" parent="MarginContainer"]
+texture_filter = 1
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_nq18v")
+theme_override_font_sizes/font_size = 10
+vertical_alignment = 1
+
+[node name="letterDisplayTimer" type="Timer" parent="."]
+one_shot = true
+
+[connection signal="timeout" from="letterDisplayTimer" to="." method="_on_letter_display_timer_timeout"]

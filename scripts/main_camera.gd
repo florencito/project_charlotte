@@ -6,7 +6,7 @@ var shake_timer := 0.0
 func _process(delta):
 	if shake_timer > 0:
 		shake_timer -= delta
-		var offset = Vector2(
+		offset = Vector2(
 			randf_range(-shake_strength, shake_strength),
 			randf_range(-shake_strength, shake_strength)
 		)

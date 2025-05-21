@@ -1,0 +1,111 @@
+[gd_scene load_steps=8 format=3 uid="uid://d0timolxnxctk"]
+
+[ext_resource type="Script" uid="uid://be503kdtx315g" path="res://scripts/timer_label.gd" id="1_ik4gr"]
+[ext_resource type="Script" uid="uid://dmtgpoyid44ma" path="res://scripts/main_canvas.gd" id="1_yip0w"]
+[ext_resource type="FontFile" uid="uid://bba4j6odm3lgi" path="res://assets/fonts/PixelAE-Bold.ttf" id="2_quuxn"]
+[ext_resource type="Texture2D" uid="uid://bttsdv5kjsg6w" path="res://assets/UI/panel-000.png" id="3_quuxn"]
+[ext_resource type="Script" uid="uid://cm04m8241tflk" path="res://scripts/dialogue_container.gd" id="4_noyfb"]
+[ext_resource type="FontFile" uid="uid://b4g04vyi4bdxe" path="res://assets/fonts/VCR_OSD_MONO_1.001.ttf" id="6_ke38v"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_x4b8f"]
+font = ExtResource("2_quuxn")
+font_size = 80
+shadow_size = 14
+shadow_color = Color(0, 0, 0, 1)
+
+[node name="mainCanvas" type="CanvasLayer"]
+script = ExtResource("1_yip0w")
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="CenterContainer" type="CenterContainer" parent="Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+script = ExtResource("1_ik4gr")
+
+[node name="timerLabel" type="Label" parent="Control/CenterContainer" groups=["timerLabel"]]
+visible = false
+layout_mode = 2
+text = "3"
+label_settings = SubResource("LabelSettings_x4b8f")
+
+[node name="MarginContainer" type="MarginContainer" parent="Control/CenterContainer"]
+layout_mode = 2
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Control/CenterContainer/MarginContainer"]
+layout_mode = 2
+bbcode_enabled = true
+text = "NICE"
+
+[node name="dialogueContainer" type="MarginContainer" parent="Control"]
+visible = false
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -15.0
+offset_top = -30.0
+offset_right = 15.0
+grow_horizontal = 2
+grow_vertical = 0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_constants/margin_bottom = 35
+script = ExtResource("4_noyfb")
+
+[node name="NinePatchRect" type="NinePatchRect" parent="Control/dialogueContainer"]
+layout_mode = 2
+texture = ExtResource("3_quuxn")
+patch_margin_left = 16
+patch_margin_top = 16
+patch_margin_right = 14
+patch_margin_bottom = 14
+
+[node name="MarginContainer" type="MarginContainer" parent="Control/dialogueContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 15
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 15
+theme_override_constants/margin_bottom = 8
+
+[node name="Label" type="Label" parent="Control/dialogueContainer/MarginContainer"]
+texture_filter = 1
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 36
+text = "This is a test"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="Control"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+grow_horizontal = 0
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+
+[node name="deathCounter" type="Label" parent="Control/MarginContainer" groups=["deathCounterLabel"]]
+layout_mode = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_outline_size = 10
+theme_override_fonts/font = ExtResource("6_ke38v")
+theme_override_font_sizes/font_size = 26
+text = "Deaths: 999"
